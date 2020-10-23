@@ -151,8 +151,8 @@ export default class Battle extends React.Component {
               ? <PlayerInput label='Player One' onSubmit={player => this.handleSubmit('playerOne', player)} />
               : <PlayerPreview username={playerOne} label='Player One' onReset={() => this.handleReset('playerOne')} />}
             {playerTwo === null
-            ? <PlayerInput label='Player Two' onSubmit={player => this.handleSubmit('playerTwo', player)} />
-            : <PlayerPreview username={playerTwo} label='Player Two' onReset={() => this.handleReset('playerTwo')} />}
+              ? <PlayerInput label='Player Two' onSubmit={player => this.handleSubmit('playerTwo', player)} />
+              : <PlayerPreview username={playerTwo} label='Player Two' onReset={() => this.handleReset('playerTwo')} />}
           </div>
           {playerOne && playerTwo && (
             <button className='btn dark-btn btn-space' onClick={() => this.setState({battle: true})}>
