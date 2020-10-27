@@ -1,20 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import Popular from './components/Popular';
-import Battle from './components/Battle';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import Popular from "./components/Popular";
+import Battle from "./components/Battle";
+import { ThemeProvider } from "./contexts/theme";
 
 class App extends React.Component {
-    render() {
-        return (
-          <div className='container'>
-              <Battle />
-          </div>
-        )
-    }
+  constructor() {
+    super(props);
+
+    this.state = {
+      theme: "light",
+      toggleTheme: () => {
+        this.setState(({ theme }) => ({
+          theme: theme === "light" ? "dark" : "light",
+        }));
+      },
+    };
+  }
+  render() {
+    return (
+      <ThemeProvider value={}>
+        <div className="container">
+          <Battle />
+        </div>
+      </ThemeProvider>
+    );
+  }
 }
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('app')
-)
+ReactDOM.render(<App />, document.getElementById("app"));
