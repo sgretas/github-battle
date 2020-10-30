@@ -1,13 +1,6 @@
 import React from "react";
 import { battle } from "../utils/api";
-import {
-  FaCompass,
-  FaBriefcase,
-  FaUsers,
-  FaUserFriends,
-  FaCode,
-  FaUser,
-} from "react-icons/fa";
+import { FaCompass, FaBriefcase, FaUsers, FaUserFriends, FaCode, FaUser } from "react-icons/fa";
 import Card from "./Card";
 import PropTypes from "prop-types";
 import Loading from "./Loading";
@@ -55,20 +48,15 @@ ProfileList.propTypes = {
 };
 
 export default class Results extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      winner: null,
-      loser: null,
-      error: null,
-      loading: true,
-    };
-  }
+  state = {
+    winner: null,
+    loser: null,
+    error: null,
+    loading: true,
+  };
 
   componentDidMount() {
     const { playerOne, playerTwo } = queryString.parse(this.props.location.search);
-
     battle([playerOne, playerTwo])
       .then((players) => {
         this.setState({
@@ -88,11 +76,9 @@ export default class Results extends React.Component {
 
   render() {
     const { winner, loser, error, loading } = this.state;
-
     if (loading === true) {
       return <Loading text={'Battling'} />;
     }
-
     if (error) {
       <p className="center-text error">{error}</p>;
     }
@@ -119,10 +105,7 @@ export default class Results extends React.Component {
             <ProfileList profile={loser.profile} />
           </Card>
         </div>
-        <Link
-          to='/battle'
-          className='btn dark-btn btn-space'
-        >
+        <Link to='/battle' className='btn dark-btn btn-space'>
           Reset
         </Link>
       </React.Fragment>
